@@ -1,6 +1,7 @@
 import React from 'react'
 import { ListGroup } from 'react-bootstrap'
 import { useConversations } from '../contexts/ConversationsProvider';
+import {Avatar} from '@material-ui/core'
 
 export default function Conversations() {
   const { conversations, selectConversationIndex } = useConversations()
@@ -13,8 +14,9 @@ export default function Conversations() {
           action
           onClick={() => selectConversationIndex(index)}
           active={conversation.selected}
+          style={{display:"flex"}}
         >
-          {conversation.recipients.map(r => r.name).join(', ')}
+          <Avatar className="mx-2"/> {conversation.recipients.map(r => r.name).join(', ')}
         </ListGroup.Item>
       ))}
     </ListGroup>
